@@ -9,20 +9,35 @@
     body {
       background-color: #f4f5fb; /* ultra-light purple background */
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
+
+    /* Navbar */
     .navbar {
       background-color: white;
       border-bottom: 1px solid #ddd;
       padding: 0.5rem 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
     .navbar img.logo {
       height: 40px;
     }
     .profile-pic {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       object-fit: cover;
+    }
+
+    /* Push content below navbar */
+    .content {
+      margin-top: 70px;
+      padding: 0 12px;
     }
 
     /* Cards */
@@ -35,12 +50,11 @@
       margin-bottom: 15px;
     }
     .card-title {
-    color: #0d47a1;
-    font-weight: 700;   /* full bold */
-    font-size: 17px;    /* bigger heading */
-    margin-bottom: 2px;
+      color: #0d47a1;
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 2px;
     }
-
     .card-link {
       display: block;
       margin: 3px 0 10px;
@@ -103,8 +117,8 @@
       text-align: center;
       font-size: 14px;
       color: #555;
-      margin-top: 10px;
       border-top: 1px solid #ddd;
+      margin-top: auto;
     }
     .footer-box .bug {
       color: red;
@@ -115,39 +129,36 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar d-flex align-items-center px-2" style="background:white; border-bottom:1px solid #ddd;">
-
+<nav class="navbar d-flex align-items-center justify-content-between">
   <!-- Left: Hamburger + Logo -->
   <div class="d-flex align-items-center">
-    <!-- Hamburger -->
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" style="cursor:pointer; margin-right:10px;">
       <path d="M3 6h18M3 12h18M3 18h18" stroke="#000" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <img src="login-logo-main.png" class="logo" alt="CUIMS Logo" style="height:40px;">
+    <img src="login-logo-main.png" class="logo" alt="CUIMS Logo">
   </div>
 
-<!-- Middle: Search Bar -->
-<div class="flex-grow-1 mx-3">
-  <div style="position: relative; width:100%;">
-    <input type="text" placeholder="Search & Bookmark your page"
-      style="width:100%; background:#f2f2f2; border:none; border-radius:25px; padding:6px 35px 6px 12px; font-size:14px;">
-    <!-- Clean Magnifying Glass -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"
-         style="position:absolute; right:10px; top:50%; transform:translateY(-50%);">
-      <circle cx="11" cy="11" r="7" stroke="#666" stroke-width="2" fill="none"/>
-      <line x1="16.5" y1="16.5" x2="20" y2="20" stroke="#666" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+  <!-- Middle: Search Bar -->
+  <div class="flex-grow-1 mx-3">
+    <div style="position: relative; width:100%;">
+      <input type="text" placeholder="Search & Bookmark your page"
+        style="width:100%; background:#f2f2f2; border:none; border-radius:25px; padding:6px 35px 6px 12px; font-size:14px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"
+           style="position:absolute; right:10px; top:50%; transform:translateY(-50%);">
+        <circle cx="11" cy="11" r="7" stroke="#666" stroke-width="2" fill="none"/>
+        <line x1="16.5" y1="16.5" x2="20" y2="20" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
   </div>
-</div>
 
-  <!-- Right: Exact CUIMS Icons -->
+  <!-- Right: Icons + Profile -->
   <div class="d-flex align-items-center">
     <!-- Notifications -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" style="margin:0 6px;cursor:pointer;">
       <path d="M23.259,16.2l-2.6-9.371A9.321,9.321,0,0,0,2.576,7.3L.565,16.35A3,3,0,0,0,3.493,20H7.1a5,5,0,0,0,9.8,0h3.47a3,3,0,0,0,2.89-3.8ZM12,22a3,3,0,0,1-2.816-2h5.632A3,3,0,0,1,12,22Zm9.165-4.395a.993.993,0,0,1-.8.395H3.493a1,1,0,0,1-.976-1.217l2.011-9.05a7.321,7.321,0,0,1,14.2-.372l2.6,9.371A.993.993,0,0,1,21.165,17.605Z" fill="#787878"></path>
     </svg>
 
-    <!-- Book (the) -->
+    <!-- Book -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" style="margin:0 6px;cursor:pointer;">
       <path d="M22.2,2.163a4.992,4.992,0,0,0-4.1-1.081l-3.822.694A4,4,0,0,0,12,3.065,4,4,0,0,0,9.716,1.776L5.9,1.082A5,5,0,0,0,0,6V16.793a5,5,0,0,0,4.105,4.919l6.286,1.143a9,9,0,0,0,3.218,0L19.9,21.712A5,5,0,0,0,24,16.793V6A4.983,4.983,0,0,0,22.2,2.163ZM11,20.928c-.084-.012-.168-.026-.252-.041L4.463,19.745A3,3,0,0,1,2,16.793V6A3,3,0,0,1,5,3a3.081,3.081,0,0,1,.54.049l3.82.7A2,2,0,0,1,11,5.712Zm11-4.135a3,3,0,0,1-2.463,2.952l-6.285,1.142c-.084.015-.168.029-.252.041V5.712a2,2,0,0,1,1.642-1.968l3.821-.7A3,3,0,0,1,22,6Z" fill="#787878"></path>
     </svg>
@@ -163,83 +174,93 @@
     </svg>
 
     <!-- Profile Picture -->
-    <img src="profile.jpg" class="profile-pic" alt="Profile" style="margin-left:8px;width:32px;height:32px;border-radius:50%;">
+    <img src="profile.jpg" class="profile-pic" alt="Profile" style="margin-left:8px;">
   </div>
 </nav>
 
-
-    <!-- Cards -->
-    <div class="row">
-      <div class="col-6">
-        <div class="card-custom">
-          <div class="card-title">Important Links</div>
-          <span class="card-link">CLICK HERE</span>
-          <div class="icon-box" style="background-color: rgba(2,132,254,0.1);">
-            <!-- ORIGINAL Important Links Icon -->
-            <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19 1h-14a5.006 5.006 0 0 0 -5 5v12a5.006 5.006 0 0 0 5 5h14a5.006 5.006 0 0 0 5-5v-12a5.006 5.006 0 0 0 -5-5zm-14 2h14a3 3 0 0 1 3 3v1h-20v-1a3 3 0 0 1 3-3zm14 18h-14a3 3 0 0 1 -3-3v-9h20v9a3 3 0 0 1 -3 3zm0-8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 0-2h12a1 1 0 0 1 1 1zm-4 4a1 1 0 0 1 -1 1h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 1 1zm-12-12a1 1 0 1 1 1 1 1 1 0 0 1 -1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1 -1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1 -1-1z" fill="#0284fe"></path></svg>
-          </div>
-        </div>
-      </div>
-
-        <div class="col-6">
-        <div class="card-custom">
-            <div class="card-title">Student Facilitation</div>
-            <span class="card-link">CLICK TO VIEW</span>
-            <div class="icon-box" style="background-color: rgba(156,39,176,0.1);">
-            <!-- EXACT Student Facilitation Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path d="m16.395,10.122l-5.192-2.843c-.673-.379-1.473-.372-2.138.017-.667.39-1.064,1.083-1.064,1.855v5.699c0,.772.397,1.465,1.064,1.855.34.199.714.297,1.087.297.358,0,.716-.091,1.041-.274l5.212-2.854c.687-.386,1.096-1.086,1.096-1.873s-.409-1.487-1.105-1.878Zm-.961,2.003l-5.212,2.855c-.019.01-.077.042-.147-.001-.074-.043-.074-.107-.074-.128v-5.699c0-.021,0-.085.074-.128.027-.016.052-.021.074-.021.036,0,.065.016.083.026l5.192,2.844c.019.011.076.043.076.13s-.058.119-.066.125Z" fill="#9c27b0"></path>
-                <path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12,12-5.383,12-12S18.617,0,12,0Zm0,22c-5.514,0-10-4.486-10-10S6.486,2,12,2s10,4.486,10,10-4.486,10-10,10Z" fill="#9c27b0"></path>
-            </svg>
-            </div>
-        </div>
-        </div>
+<!-- Main content -->
+<div class="content">
 
 
-      <div class="col-6">
-        <div class="card-custom">
-          <div class="card-title">Anti Ragging</div>
-          <span class="card-link">READ NOW</span>
-          <div class="icon-box" style="background-color: rgba(113,127,241,0.1);">
-            <!-- ORIGINAL Anti Ragging Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#717ff1"><path d="M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z"></path><path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z"></path></svg>
-          </div>
-        </div>
-      </div>
+<!-- Cards -->
+<div class="container-fluid px-2"> <!-- adds left/right padding -->
+  <div class="row g-3"> <!-- g-3 = equal gap between columns and rows -->
 
-      <div class="col-6">
-        <div class="card-custom">
-          <div class="card-title">My University Email</div>
-          <span class="card-link">VIEW DETAILS</span>
-          <div class="icon-box" style="background-color: rgba(2,132,254,0.1);">
-            <!-- ORIGINAL University Mail Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#0284fe"><path d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"></path></svg>
-          </div>
+    <div class="col-6">
+      <div class="card-custom">
+        <div class="card-title">Important Links</div>
+        <span class="card-link">CLICK HERE</span>
+        <div class="icon-box" style="background-color: rgba(2,132,254,0.1);">
+          <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="m19 1h-14a5.006 5.006 0 0 0 -5 5v12a5.006 5.006 0 0 0 5 5h14a5.006 5.006 0 0 0 5-5v-12a5.006 5.006 0 0 0 -5-5zm-14 2h14a3 3 0 0 1 3 3v1h-20v-1a3 3 0 0 1 3-3zm14 18h-14a3 3 0 0 1 -3-3v-9h20v9a3 3 0 0 1 -3 3zm0-8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 0-2h12a1 1 0 0 1 1 1zm-4 4a1 1 0 0 1 -1 1h-8a1 1 0 0 1 0-2h8a1 1 0 0 1 1 1zm-12-12a1 1 0 1 1 1 1 1 1 0 0 1 -1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1 -1-1zm3 0a1 1 0 1 1 1 1 1 1 0 0 1 -1-1z" fill="#0284fe"></path>
+          </svg>
         </div>
       </div>
     </div>
 
-    <!-- Hostel Details -->
-    <div class="hostel-details">
-      <h5>Hostel Details</h5>
-      <img src="hostel.jpg" alt="Hostel">
-      <table class="hostel-table">
-        <tr><td>Hostel Status</td><td>Active</td></tr>
-        <tr><td>Seater</td><td>4 Seater</td></tr>
-        <tr><td>Hostel Name</td><td>Nek Chand Tower 2</td></tr>
-        <tr><td>Room No</td><td>411-D</td></tr>
-        <tr><td>Hostel Reporting Status</td><td>Reported on Jul 3 2025 3:15PM</td></tr>
-      </table>
+    <div class="col-6">
+      <div class="card-custom">
+        <div class="card-title">Student Facilitation</div>
+        <span class="card-link">CLICK TO VIEW</span>
+        <div class="icon-box" style="background-color: rgba(156,39,176,0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="m16.395,10.122l-5.192-2.843c-.673-.379-1.473-.372-2.138.017-.667.39-1.064,1.083-1.064,1.855v5.699c0,.772.397,1.465,1.064,1.855.34.199.714.297,1.087.297.358,0,.716-.091,1.041-.274l5.212-2.854c.687-.386,1.096-1.086,1.096-1.873s-.409-1.487-1.105-1.878Z" fill="#9c27b0"></path>
+            <path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12,12-5.383,12-12S18.617,0,12,0Zm0,22c-5.514,0-10-4.486-10-10S6.486,2,12,2s10,4.486,10,10-4.486,10-10,10Z" fill="#9c27b0"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card-custom">
+        <div class="card-title">Anti Ragging</div>
+        <span class="card-link">READ NOW</span>
+        <div class="icon-box" style="background-color: rgba(113,127,241,0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#717ff1">
+            <path d="M16,8a1,1,0,0,0-1.414,0L12,10.586,9.414,8A1,1,0,0,0,8,9.414L10.586,12,8,14.586A1,1,0,0,0,9.414,16L12,13.414,14.586,16A1,1,0,0,0,16,14.586L13.414,12,16,9.414A1,1,0,0,0,16,8Z"></path>
+            <path d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm0,22A10,10,0,1,1,22,12,10.011,10.011,0,0,1,12,22Z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card-custom">
+        <div class="card-title">My University Email</div>
+        <span class="card-link">VIEW DETAILS</span>
+        <div class="icon-box" style="background-color: rgba(2,132,254,0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#0284fe">
+            <path d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"></path>
+          </svg>
+        </div>
+      </div>
     </div>
 
   </div>
+</div>
 
-  <!-- Footer -->
-  <div class="footer-box">
-    Chandigarh University, Gharuan, Mohali (Punjab) <br>
-    General Helpline No: 18002571800 <br>
-    Email Id: studentcare@cumail.in <br>
-    <span class="bug">Report a Bug</span>
+
+  <!-- Hostel Details -->
+  <div class="hostel-details">
+    <h5>Hostel Details</h5>
+    <img src="hostel.jpg" alt="Hostel">
+    <table class="hostel-table">
+      <tr><td>Hostel Status</td><td>Active</td></tr>
+      <tr><td>Seater</td><td>4 Seater</td></tr>
+      <tr><td>Hostel Name</td><td>Nek Chand Tower 2</td></tr>
+      <tr><td>Room No</td><td>411-D</td></tr>
+      <tr><td>Hostel Reporting Status</td><td>Reported on Jul 3 2025 3:15PM</td></tr>
+    </table>
   </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-box">
+  Chandigarh University, Gharuan, Mohali (Punjab) <br>
+  General Helpline No: 18002571800 <br>
+  Email Id: studentcare@cumail.in <br>
+  <span class="bug">Report a Bug</span>
+</div>
+
 </body>
 </html>
